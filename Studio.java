@@ -1,11 +1,11 @@
 import java.text.NumberFormat;
 
-public class House extends Dwelling{
+public class Studio extends Dwelling{
    private String description;
    private double rentPerMonth;
    
-   public House(String address, int roomsFree, String description, double rentPerMonth){
-      super(address, roomsFree);
+   public Studio(String address, String description, double rentPerMonth){
+      super(address, 1);
       this.description = description;
       this.rentPerMonth = rentPerMonth;
    }
@@ -14,7 +14,7 @@ public class House extends Dwelling{
       NumberFormat fmt = NumberFormat.getCurrencyInstance();
       String a = "*";
       System.out.println(a.repeat(75));
-      System.out.println("House");
+      System.out.println("Studio");
       super.display();
       System.out.println("Description: " + description + "\nRent Per Month: " + fmt.format(rentPerMonth));
    }

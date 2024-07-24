@@ -4,9 +4,9 @@ import java.util.Locale;
 
 public class RoomFinder {
     private static Dwelling[] dwellingList = {
-            new House("947 Castle St", 4, "Old villa with modern extension", 2880.0),
-            new House("951 Castle St", 3, "Refurbished villa, large back lawn", 3360.0),
-            new House("931 Castle St", 4, "Old villa with second story", 2500.0),
+            new Flat("947 Castle St", 4, "Old villa with modern extension", 2880.0),
+            new Flat("951 Castle St", 3, "Refurbished villa, large back lawn", 3360.0),
+            new Flat("931 Castle St", 4, "Old villa with second story", 2500.0),
             new Hall("944 Castle St", 10, "Thelwon Hall", 18021.5)
     };
 
@@ -20,7 +20,7 @@ public class RoomFinder {
             System.out.println(
                     "Accomodation Menu:\n\tEnter 1 to print dwellings\n\tEnter 2 to show total free rooms\n\tEnter 3 to add a tenant to a dwelling");
             System.out.println("\tEnter 4 to show the monthly cost of rooms\n\tEnter 5 to show the smallest rooms\n\tEnter 6 to add a new dwelling\n\tEnter 0 to quit");
-            System.out.println("Please enter an int between 0 and 5(inclusive): ");
+            System.out.println("Please enter a number: ");
             ifPrint = sc.nextInt();
             System.out.println();
             if (ifPrint == 1) {
@@ -100,9 +100,20 @@ public class RoomFinder {
     }
 
     public static void newDwelling(){
+        int choice;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Is this new dwelling a house or a hall?\nEnter 1 if the dwelling is a house.");
-        System.out.println("Enter 2 if the dwelling is a hall.\nEnter 0 to Quit.\nPlease enter a number:");
+        do {
+            System.out.println("Is this new dwelling a house or a hall?\nEnter 1 if the dwelling is a house.");
+            System.out.println("Enter 2 if the dwelling is a hall.\nEnter 0 to Quit.\nPlease enter a number:");
+            choice = sc.nextInt();
+            if (choice == 0){
+                break;
+            } else if (choice != 1 && choice != 2){
+                System.out.println("Invalid Option.\n");
+            }
+        } while (choice != 0 && choice != 1 && choice != 2);
+        System.out.println();
+        
         String address = sc.nextLine();
     }
 }
