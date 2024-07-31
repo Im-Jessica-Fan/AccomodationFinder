@@ -1,14 +1,18 @@
+import java.util.*;
+
 public abstract class Dwelling{
-    protected String address;
     protected Room[] roomList;
+    protected TreeMap<String, Integer> dwelling = new TreeMap<>();
+    protected String address;
     protected int roomsFree;
     static int totalFreeRooms;
     public abstract double calcRoomPerMonth();
     
     public Dwelling(String address, int roomsFree){
-       this.address = address;
-       this.roomsFree = roomsFree;
-       roomList = new Room[roomsFree];
+      this.address = address;
+      this.roomsFree = roomsFree;
+      dwelling.put(address, roomsFree);       
+      roomList = new Room[roomsFree];
        for (int i = 0; i < roomsFree; i++){
           roomList[i] = new Room();
        }

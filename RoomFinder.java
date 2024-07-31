@@ -1,14 +1,13 @@
-import java.util.Scanner;
+import java.util.*;
 import java.text.NumberFormat;
-import java.util.Locale;
 
 public class RoomFinder {
-    private static Dwelling[] dwellingList = {
+    private static List<Dwelling> dwellingList = new ArrayList<>(Arrays.asList(            
             new Flat("947 Castle St", 4, "Old villa with modern extension", 2880.0),
             new Flat("951 Castle St", 3, "Refurbished villa, large back lawn", 3360.0),
             new Flat("931 Castle St", 4, "Old villa with second story", 2500.0),
             new Hall("944 Castle St", 10, "Thelwon Hall", 18021.5)
-    };
+    ));
 
     public static void main(String[] args) {
         Locale.setDefault(new Locale("en", "nz"));
@@ -54,23 +53,23 @@ public class RoomFinder {
 
     public static void selectAndAdd() {
         Scanner sc = new Scanner(System.in);
-        for (int i = 0; i < dwellingList.length; i++) {
-            System.out.println("Dwelling " + i + " " + dwellingList[i].address + " has " + dwellingList[i].roomsFree +
+        for (int i = 0; i < dwellingList.size(); i++) {
+            System.out.println("Dwelling " + i + " " + dwellingList.get(i).address + " has " + dwellingList.get(i).roomsFree +
                     " rooms free");
         }
         System.out.println();
         int selected;
-        int dwellingNum = dwellingList.length - 1;
+        int dwellingNum = dwellingList.size() - 1;
         do {
             System.out.println("Which dwelling do you wish to add a tenant to?\nPlease enter an int between 0 and "
                     + dwellingNum + " (inclusive): ");
             selected = sc.nextInt();
-            if (selected < dwellingList.length) {
-                dwellingList[selected].addTenant();
+            if (selected < dwellingList.size()) {
+                dwellingList.get(selected).addTenant();
             } else {
                 System.out.println("This dwelling number does not exist!\n");
             }
-        } while (selected >= dwellingList.length);
+        } while (selected >= dwellingList.size());
     }
 
     public static void costPerMonth() {
